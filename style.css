@@ -1,0 +1,8 @@
+html, body, #touchget {
+  width: 100%;
+  height: 100%;
+}
+
+#touchget {
+  background-color: steelblue;
+}

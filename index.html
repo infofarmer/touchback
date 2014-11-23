@@ -1,3 +1,31 @@
-<html>
-  Hello
-</html>
+<!DOCTYPE html>
+<head>
+  <title>Pusher Test</title>
+  <script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    // Enable pusher logging - don't include this in production
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+
+    var pusher = new Pusher('c33fc4a8941963703867');
+    var channel = pusher.subscribe('test_channel');
+    channel.bind('my_event', function(data) {
+      alert(data.message);
+    });
+
+function startup() {
+  var el = document.getElementsByTagName("canvas")[0];
+  el.addEventListener("touchstart", ht, false);
+  el.addEventListener("touchend", ht, false);
+  el.addEventListener("touchcancel", ht, false);
+  el.addEventListener("touchleave", ht, false);
+  el.addEventListener("touchmove", ht, false);
+  log("initialized.");
+}
+  </script>
+</head>
+<body>
+</body>

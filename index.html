@@ -2,54 +2,43 @@
 <head>
   <title>Touchback</title>
   <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
-  <script src="http://js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
   <script src="jquery-2.1.1.min.js" type="text/javascript"></script>
-
+  <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
   <script type="text/javascript">
-    // Enable pusher logging - don't include this in production
-    Pusher.log = function(message) {
-      if (window.console && window.console.log) {
-        window.console.log(message);
-      }
-    };
 
-    var pusher = new Pusher('c33fc4a8941963703867');
-    var channel = pusher.subscribe('TOUCH');
+    var fb = new Firebase("https://glaring-inferno-4032.firebaseio.com/");
 
-    channel.bind('mousemove', function(data) { console.log('bind done'); });
-
-    function ht(e) {
-      console.log("x =" + " " + e.pageX);
-      console.log("y =" + " " + e.pageY);
-      e.preventDefault();
-      channel.trigger('mousemove', e);
+    function ht(evt) {
+      console.log("event.");
+      evt.preventDefault();
+      fb.set({t: evt.touches});
     }
 
-    // function startup() {
-    //   console.log('startup');
-    //   var el = $(this);
-    //   el.on('mousemove', function() {
-    //         // alert( $( this ).text() );
-    //         // startup();
-    //         // console.log($(this));
-    //         // startup($(this));
-    //         console.log('ht');
-    //   });
-    //
-    //   // el.addEventListener("touchstart", ht, false);
-    //   // el.addEventListener("touchend", ht, false);
-    //   // el.addEventListener("touchcancel", ht, false);
-    //   // el.addEventListener("touchleave", ht, false);
-    //   // el.addEventListener("touchmove", ht, false);
-    //   console.log("initialized.");
-    // }
+    function startup() {
+      var el = document.getElementsByTagName("div")[0];
+      el.addEventListener("touchstart", ht, false);
+      el.addEventListener("touchend", ht, false);
+      el.addEventListener("touchcancel", ht, false);
+      el.addEventListener("touchleave", ht, false);
+      el.addEventListener("touchmove", ht, false);
+      console.log('startup');
+    }
 
-    $(function() {
-
-      $("#touchget").mousemove(function(e) {
-        ht(e);
-      });
-
+    fb.child("t").on("value", function(snapshot) {
+      var x = snapshot.val();
+      var b = x['0'];
+      console.log('got');
+      console.log(b);
+      if (typeof b === 'undefined') {
+        $('#finger').css('display', 'none');
+        console.log('RELEASED');
+      } else {
+        console.log();
+        $('#finger').css('display', 'block');
+        $('#finger').css('position', 'fixed');
+        $('#finger').css('top', b.clientY);
+        $('#finger').css('left', b.clientX);
+      }
     });
   </script>
 </head>
@@ -106,5 +95,6 @@
     </div>
   </div>
 
-  <div id="touchget"></div>
+  <div onClick="startup();" id="touchget"></div>
+  <div id="finger" style="background: black;width: 100px;height: 100px;"></div>
 </body>

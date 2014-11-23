@@ -6,40 +6,48 @@
   <script src="jquery-2.1.1.min.js" type="text/javascript"></script>
 
   <script type="text/javascript">
+    // Enable pusher logging - don't include this in production
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+
+    var pusher = new Pusher('c33fc4a8941963703867');
+    var channel = pusher.subscribe('touch');
+
+    channel.bind('touch', function(data) { });
+
+    function ht(e) {
+      console.log("x =" + " " + e.pageX);
+      console.log("; y =" + " " + e.pageY);
+      // e.preventDefault();
+      // channel.trigger('touch', e.pageXe.Touches);
+    }
+
+    // function startup() {
+    //   console.log('startup');
+    //   var el = $(this);
+    //   el.on('mousemove', function() {
+    //         // alert( $( this ).text() );
+    //         // startup();
+    //         // console.log($(this));
+    //         // startup($(this));
+    //         console.log('ht');
+    //   });
+    //
+    //   // el.addEventListener("touchstart", ht, false);
+    //   // el.addEventListener("touchend", ht, false);
+    //   // el.addEventListener("touchcancel", ht, false);
+    //   // el.addEventListener("touchleave", ht, false);
+    //   // el.addEventListener("touchmove", ht, false);
+    //   console.log("initialized.");
+    // }
+
     $(function() {
-      console.log('init');
 
-      // Enable pusher logging - don't include this in production
-      Pusher.log = function(message) {
-        if (window.console && window.console.log) {
-          window.console.log(message);
-        }
-      };
-
-      var pusher = new Pusher('c33fc4a8941963703867');
-      var channel = pusher.subscribe('touch');
-      channel.bind('touch', function(data) {
-      });
-
-      function startup() {
-        var el = $('#touchget');
-        el.addEventListener("touchstart", ht, false);
-        el.addEventListener("touchend", ht, false);
-        el.addEventListener("touchcancel", ht, false);
-        el.addEventListener("touchleave", ht, false);
-        el.addEventListener("touchmove", ht, false);
-        console.log("initialized.");
-      }
-
-      function ht(evt) {
-        console.log("event.");
-        evt.preventDefault();
-        channel.trigger('touch', evt.Touches);
-      }
-
-      $("#touchget").on( "click", function() {
-        // alert( $( this ).text() );
-        startup();
+      $("#touchget").mousemove(function(e) {
+        ht(e);
       });
 
     });

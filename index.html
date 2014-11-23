@@ -11,13 +11,12 @@
     };
 
     var pusher = new Pusher('c33fc4a8941963703867');
-    var channel = pusher.subscribe('test_channel');
-    channel.bind('my_event', function(data) {
-      alert(data.message);
+    var channel = pusher.subscribe('touch');
+    channel.bind('touch', function(data) {
     });
 
 function startup() {
-  var el = document.getElementsByTagName("canvas")[0];
+  var el = document.getElementsByTagName("body")[0];
   el.addEventListener("touchstart", ht, false);
   el.addEventListener("touchend", ht, false);
   el.addEventListener("touchcancel", ht, false);
@@ -25,6 +24,12 @@ function startup() {
   el.addEventListener("touchmove", ht, false);
   log("initialized.");
 }
+
+function ht(evt) {
+  evt.preventDefault();
+  channel.trigger('touch', evt.Touches);
+}
+
   </script>
 </head>
 <body>

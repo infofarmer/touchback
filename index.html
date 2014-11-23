@@ -17,19 +17,21 @@
     });
 
     function startup() {
-      var el = document.getElementsByTagName("body")[0];
+      var el = document.getElementsByTagName("body");
       el.addEventListener("touchstart", ht, false);
       el.addEventListener("touchend", ht, false);
       el.addEventListener("touchcancel", ht, false);
       el.addEventListener("touchleave", ht, false);
       el.addEventListener("touchmove", ht, false);
-      log("initialized.");
+      console.log("initialized.");
     }
 
     function ht(evt) {
+      console.log("event.");
       evt.preventDefault();
       channel.trigger('touch', evt.Touches);
     }
+
     $(function() {
       startup();
     })

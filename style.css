@@ -1,8 +1,71 @@
-html, body, #touchget {
+html, body, #background, #touchget, #criteria1, #criteria2, #circleContainer {
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  height: 80px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+#circleContainer {
+  display: flex;
+}
+
+#circle {
+  display: flex;
+  position: relative;
+  margin: auto;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  border-radius: 250px;
+}
+
+.circle2 {
+  display: flex;
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+#background, #criteria1, #criteria2, #circleContainer {
+  position: absolute;
+}
+
+#background {
+  background-color: steelblue;
 }
 
 #touchget {
-  background-color: steelblue;
+  position: relative;
+  z-index: 2;
+}
+
+#criteria1, #criteria2 {
+  display: flex;
+}
+
+#criteria1 {
+  flex-direction: column;
+  justify-content: center;
+}
+
+#criteria2 {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#criteria2 h2 {
+  transform: rotate(-90deg);
+}
+
+#finger {
+  background: lightgreen;
+  border-radius: 50%;
 }

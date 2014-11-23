@@ -14,15 +14,15 @@
     };
 
     var pusher = new Pusher('c33fc4a8941963703867');
-    var channel = pusher.subscribe('touch');
+    var channel = pusher.subscribe('TOUCH');
 
-    channel.bind('touch', function(data) { });
+    channel.bind('mousemove', function(data) { console.log('bind done'); });
 
     function ht(e) {
       console.log("x =" + " " + e.pageX);
-      console.log("; y =" + " " + e.pageY);
-      // e.preventDefault();
-      // channel.trigger('touch', e.pageXe.Touches);
+      console.log("y =" + " " + e.pageY);
+      e.preventDefault();
+      channel.trigger('mousemove', e);
     }
 
     // function startup() {
@@ -54,5 +54,57 @@
   </script>
 </head>
 <body>
+  <div id="background">
+    <div id="circleContainer">
+      <div id="circle">
+        <div class="circle2">
+          <div class="circle2">
+            <div class="circle2">
+              <div class="circle2">
+                <div class="circle2">
+                  <div class="circle2">
+                    <div class="circle2">
+                      <div class="circle2">
+                        <div class="circle2">
+                          <div class="circle2">
+                            <div class="circle2">
+                              <div class="circle2">
+                                <div class="circle2">
+                                  <div class="circle2">
+                                    <div class="circle2">
+                                      <div class="circle2">
+                                        <div class="circle2">
+                                          <div class="circle2">
+                                            <div class="circle2"></div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="criteria1">
+      <h2>Criteria 1</h2>
+    </div>
+
+    <div id="criteria2">
+      <h2>Criteria 2</h2>
+    </div>
+  </div>
+
   <div id="touchget"></div>
 </body>

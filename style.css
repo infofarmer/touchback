@@ -1,4 +1,4 @@
-html, body, #background, #touchget, #criteria1, #criteria2, #circleContainer {
+html, body, #background, #criteria1, #criteria2, #circleContainer {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -42,11 +42,6 @@ h2 {
 
 #background {
   background-color: steelblue;
-}
-
-#touchget {
-  position: relative;
-  z-index: 2;
 }
 
 #criteria1, #criteria2 {

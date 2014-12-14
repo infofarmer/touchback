@@ -15,7 +15,7 @@
     var ses = $.cookie('ses');
 
     if ( typeof ses === 'undefined' ) {
-      ses = 'ses' + Math.random();
+      ses = 'ses' + (Math.random() + '').substr(2);
       $.cookie('ses', ses, { expires: 7, path: '/' });
     }
 
@@ -29,7 +29,8 @@
         y = evt.touches[0].clientY;
       }
       n = {};
-      n[id] = { x: x, y: y };
+      n[id] = {};
+      n[id][ses] = { x: x, y: y };
       fb.update(n);
     }
 

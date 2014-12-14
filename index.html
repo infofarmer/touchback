@@ -64,14 +64,14 @@
       console.log('got');
       console.log(b);
       if (typeof b === 'undefined') {
-        $('#finger').css('display', 'none');
+        $('.finger').css('display', 'none');
         console.log('RELEASED');
       } else {
         console.log();
-        $('#finger').css('display', 'block');
-        $('#finger').css('position', 'fixed');
-        $('#finger').css('top', b.y);
-        $('#finger').css('left', b.x);
+        $('.finger').css('display', 'block');
+        $('.finger').css('position', 'fixed');
+        $('.finger').css('top', b.y);
+        $('.finger').css('left', b.x);
       }
     });
     $(document).ready(startup);
@@ -129,5 +129,5 @@
         <h2>Usefulness</h2>
       </div>
     </div>
-  <div id="finger" style="background: black;width: 100px;height: 100px;"></div>
+  <div class="finger"></div>
 </body>

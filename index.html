@@ -20,7 +20,22 @@
         x = evt.touches[0].clientX;
         y = evt.touches[0].clientY;
       }
-      fb.set({t: { x: x, y: y }});
+      n = {};
+      n[id] = { x: x, y: y };
+      fb.update(n);
+    }
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    id = getParameterByName('id');
+
+    if (typeof id === 'undefined' || id == "" ) {
+      id = 'default';
     }
 
     function startup() {
@@ -34,7 +49,7 @@
       console.log('startup');
     }
 
-    fb.child("t").on("value", function(snapshot) {
+    fb.child(id).on("value", function(snapshot) {
       var x = snapshot.val();
       var b = x;
       console.log('got');

@@ -11,10 +11,12 @@ h2 {
 }
 
 #circleContainer {
+  display: -webkit-flex;
   display: flex;
 }
 
 #circle {
+  display: -webkit-flex;
   display: flex;
   position: relative;
   margin: auto;
@@ -25,6 +27,7 @@ h2 {
 }
 
 .circle2 {
+  display: -webkit-flex;
   display: flex;
   margin: auto;
   width: 80%;
@@ -47,21 +50,28 @@ h2 {
 }
 
 #criteria1, #criteria2 {
+  display: -webkit-flex;
   display: flex;
 }
 
 #criteria1 {
+  -webkit-flex-direction: column;
   flex-direction: column;
+  -webkit-justify-content: center;
   justify-content: center;
 }
 
 #criteria2 {
+  -webkit-flex-direction: row;
   flex-direction: row;
+  -webkit-justify-content: center;
   justify-content: center;
+  -webkit-align-items: flex-end;
   align-items: flex-end;
 }
 
 #criteria2 h2 {
+  -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
 

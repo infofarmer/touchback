@@ -59,19 +59,20 @@
     }
 
     fb.child(id).on("value", function(snapshot) {
+      // rses = remote session
+      // hses = hashed remote session
       var x = snapshot.val();
-      var b = x;
-      console.log('got');
-      console.log(b);
-      if (typeof b === 'undefined') {
-        $('.finger').css('display', 'none');
-        console.log('RELEASED');
-      } else {
-        console.log();
-        $('.finger').css('display', 'block');
-        $('.finger').css('position', 'fixed');
-        $('.finger').css('top', b.y);
-        $('.finger').css('left', b.x);
+      for (var rses in x){
+        hses = '#' + rses;
+        if ($(hses).length == 0) {
+          $('body').append('<div class="finger" id="' + rses + '"></div>');
+        }
+        $(hses).css('top', x[rses].y);
+        $(hses).css('left', x[rses].x);
+        if ( rses == ses ) {
+          $(hses).css('width', '100px');
+          $(hses).css('height', '100px');
+        }
       }
     });
     $(document).ready(startup);
@@ -129,5 +130,4 @@
         <h2>Usefulness</h2>
       </div>
     </div>
-  <div class="finger"></div>
 </body>

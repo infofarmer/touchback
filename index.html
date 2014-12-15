@@ -25,8 +25,8 @@
       var x = null;
       var y = null;
       if ( evt.touches[0] ) {
-        x = evt.touches[0].clientX;
-        y = evt.touches[0].clientY;
+        x = evt.touches[0].clientX / document.body.getBoundingClientRect().width;
+        y = evt.touches[0].clientY / document.body.getBoundingClientRect().height;
       }
       n = {};
       n[id] = {};
@@ -67,12 +67,12 @@
         if ($(hses).length == 0) {
           $('body').append('<div class="finger" id="' + rses + '"></div>');
         }
-        $(hses).css('top', x[rses].y);
-        $(hses).css('left', x[rses].x);
         if ( rses == ses ) {
           $(hses).css('width', '100px');
           $(hses).css('height', '100px');
         }
+        $(hses).css('top', x[rses].y * document.body.getBoundingClientRect().height - $(hses).height() / 2);
+        $(hses).css('left', x[rses].x * document.body.getBoundingClientRect().width - $(hses).width() / 2);
       }
     });
     $(document).ready(startup);

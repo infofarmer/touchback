@@ -24,7 +24,10 @@
       evt.preventDefault();
       var x = null;
       var y = null;
-      if ( evt.touches[0] ) {
+      if ( evt.clientX ) {
+        x = evt.clientX / document.body.getBoundingClientRect().width;
+        y = evt.clientY / document.body.getBoundingClientRect().height;
+      } else if ( evt.touches[0] ) {
         x = evt.touches[0].clientX / document.body.getBoundingClientRect().width;
         y = evt.touches[0].clientY / document.body.getBoundingClientRect().height;
       }
@@ -55,6 +58,7 @@
       el.addEventListener("touchcancel", ht, false);
       el.addEventListener("touchleave", ht, false);
       el.addEventListener("touchmove", ht, false);
+      el.addEventListener("mousedown", ht, false);
       console.log('startup');
     }
 

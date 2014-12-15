@@ -80,6 +80,7 @@
         if ( rses == ses ) {
           $(hses).css('width', '100px');
           $(hses).css('height', '100px');
+          $(hses).css('transition', 'none');
         }
         $(hses).css('top', x[rses].y * document.body.getBoundingClientRect().height - $(hses).height() / 2);
         $(hses).css('left', x[rses].x * document.body.getBoundingClientRect().width - $(hses).width() / 2);

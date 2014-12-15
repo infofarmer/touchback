@@ -81,6 +81,15 @@ h2 {
 }
 
 div {
+	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
 }
 
+#qrcode {
+	display: block;
+	position: fixed;
+	width: 200px;
+	height: 200px;
+	bottom: 100px;
+	right: 100px;
+}

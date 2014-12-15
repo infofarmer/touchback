@@ -79,3 +79,8 @@ h2 {
   display: block;
   position: fixed;
 }
+
+div {
+	transition: all 0.5s ease;
+}
+
